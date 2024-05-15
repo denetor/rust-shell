@@ -6,6 +6,11 @@ use structopt::StructOpt;
 pub enum Action {
     /// List all commands
     List,
+    /// Display a file content
+    Cat {
+        #[structopt()]
+        target_file: PathBuf,
+    },
 }
 
 
@@ -17,4 +22,7 @@ pub enum Action {
 pub struct CommandLineArgs {
     #[structopt(subcommand)]
     pub action: Action,
+
+    #[structopt(parse(from_os_str), short, long)]
+    pub target_file: Option<PathBuf>,
 }
