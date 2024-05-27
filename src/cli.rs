@@ -1,4 +1,4 @@
-use std::path::PathBuf;
+// use std::path::PathBuf;
 use structopt::StructOpt;
 
 
@@ -6,11 +6,10 @@ use structopt::StructOpt;
 pub enum Action {
     /// List all commands
     List,
+    /// List files in current directory
+    Ls,
     /// Display a file content
-    Cat {
-        #[structopt()]
-        target_file: PathBuf,
-    },
+    Cat,
 }
 
 
@@ -22,7 +21,4 @@ pub enum Action {
 pub struct CommandLineArgs {
     #[structopt(subcommand)]
     pub action: Action,
-
-    #[structopt(parse(from_os_str), short, long)]
-    pub target_file: Option<PathBuf>,
 }

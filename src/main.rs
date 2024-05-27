@@ -1,9 +1,9 @@
 use structopt::StructOpt;
 mod cli;
-mod catCommand;
+mod cat_command;
 
-use cli::{Action::*, CommandLineArgs};
-use catCommand::CatCommand;
+use cli::{CommandLineArgs};
+use cat_command::CatCommand;
 
 fn main() {
     // println!("{:#?}", cli::CommandLineArgs::from_args());
@@ -11,12 +11,9 @@ fn main() {
     // Get the command-line arguments.
     let CommandLineArgs {
         action,
-        target_file,
     } = CommandLineArgs::from_args();
 
-    let target_file = target_file.expect("Missing target file");
-
     match action {
-        cat => CatCommand::do_cat(target_file),
+        _cat => CatCommand::do_cat(),
     }
 }
