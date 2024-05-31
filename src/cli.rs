@@ -4,8 +4,6 @@ use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]
 pub enum Action {
-    /// List all commands
-    List,
     /// List files in current directory
     Ls,
     /// Display a file content

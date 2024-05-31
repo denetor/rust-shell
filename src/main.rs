@@ -1,19 +1,16 @@
-use structopt::StructOpt;
-mod cli;
-mod cat_command;
+mod ls;
 
-use cli::{CommandLineArgs};
-use cat_command::CatCommand;
+use ls::Ls;
 
 fn main() {
-    // println!("{:#?}", cli::CommandLineArgs::from_args());
+    let command = std::env::args().nth(1).expect("no command given");
 
-    // Get the command-line arguments.
-    let CommandLineArgs {
-        action,
-    } = CommandLineArgs::from_args();
-
-    match action {
-        _cat => CatCommand::do_cat(),
+    if command == "ls" {
+        // println!("trying to execute ls command");
+        Ls::run();
+    } else if command == "cat" {
+        println!("trying to execute cat command");
+    } else {
+        println!("unknown command: {}", command);
     }
 }
